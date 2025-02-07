@@ -1,0 +1,21 @@
+#q1
+
+#a
+awk '{print NR}' aliceinwonderland.txt | tail -1
+
+#b
+grep -o ' Alice ' aliceinwonderland.txt | awk '{a[$1]++} END {for (k in a) print a[k]}'
+#another option only with awk
+#awk '/ Alice /{count++} END {print count}' aliceinwonderland.txt 
+
+#c
+awk '{for (i=1; i<=NF; i++) a[$i]++} END {for (word in a) if (a[word] == 1) print word}' aliceinwonderland.txt 
+#another option
+#grep -o '[a-zA-Z]\+' aliceinwonderland.txt | sort | uniq -c | awk '$1 == 1 {print $2}'
+
+#d
+grep -o '[a-zA-Z]\+' aliceinwonderland.txt | awk '{a[$1]++} END {for (k in a) print a[k], k}' |sort -n | tail -5
+
+#e
+awk '{for (i=1; i<=NF; i++) {total_chars += length($i); total_words++}} END {print total_chars / total_words}' aliceinwonderland.txt
+

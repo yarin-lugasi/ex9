@@ -1,0 +1,12 @@
+#q2
+#a
+sed -n '/Sherlock\|Holmes/p' sherlockholmes.txt | wc -l
+#b 
+sed -n '/Sherlock\|Holmes/p' sherlockholmes.txt sherlockholmes.txt | grep -oE 'Sherlock|Holmes' | wc -l
+#c
+sed 's/^/hello /' sherlockholmes.txt
+#d
+sed -E 's/\b[A-Z][a-z]{1,}\s[A-Z][a-z]{1,}\b/yarin/g' sherlockholmes.txt
+#e
+sed -e 's/(/[/g' -e 's/)/]/g' sherlockholmes.txt
+
